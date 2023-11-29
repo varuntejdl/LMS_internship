@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
  import './Header.css';
 function Header(){
+    
     return(
         
-        <div className="d-flex justify-content-between bg-white px-4 py-1 w-100" style={{boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',}}>
-            <div>
-                <img src="https://digital-lync.konalms.com/assets/logo.ab024049.png" alt="Logo" />
+        <div className="d-flex justify-content-between bg-white px-4 py-1 w-100" style={{boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',}} >
+            <div><Link to='/learnerdashboard'>
+                <img src="https://digital-lync.konalms.com/assets/logo.ab024049.png" alt="Logo" /></Link>
             </div>
             <div className="d-flex  justify-content-center align-items-center">
                 {/* {<div className='me-4'>
