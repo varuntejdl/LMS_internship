@@ -72,15 +72,15 @@ const Login = () => {
       // }
       // fetchUserId();
       ////////////////////////////
-      if (userRole === "admin") {
-        // window.cookies.set("cook", jwt);
-        return navigate("/admindashboard");
-      } else if (userRole === "user") {
+      if (userRole === "admin" || userRole === "user") {
         // window.cookies.set("cook", jwt);
         return navigate("/learnerdashboard");
+      } else if (userRole === "superadmin") {
+        // window.cookies.set("cook", jwt);
+        return navigate("/superadmindashboard");
       }
-      // window.cookies.set("cook", jwt);
-      navigate("/superadmindashboard");
+      // // window.cookies.set("cook", jwt);
+      // navigate("/superadmindashboard");
     }
     if (responseStatus === 400) {
       console.log("loginErrorMessage: ", loginErrorMessage);
