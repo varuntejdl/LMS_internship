@@ -1,12 +1,11 @@
 import actions from "./Login.action.types";
 const initialState = {
-  name:"",
+  name: "",
   email: "",
   password: "",
   responseStatus: "",
   jwt: "",
   errorMessage: "",
-  ////
   // userid:"",
 };
 const loginReducer = (state = initialState, action) => {
@@ -16,17 +15,17 @@ const loginReducer = (state = initialState, action) => {
         ...initialState,
       };
     case actions.LOGIN:
-      console.log("payload :", action.payload);
+      //console.log("payload :", action.payload);
       return {
         ...state,
-        email: action.payload.email,
-        name: action.payload.name,
-        password: action.payload.password,
+        email: action.payload.userEmail,
+        name: action.payload.userName,
         responseStatus: "",
         errorMessage: "",
-        jwt: action.payload.token,
-        role: action.payload.roles,
-        /////
+        jwt: action.payload.jwtToken,
+        role: action.payload.userRole,
+        userCourses: action.payload.userCourses,
+        userImage: action.payload.profilePhoto
         // userid:action.payload._id
       };
     case actions.LOGIN_ERROR:

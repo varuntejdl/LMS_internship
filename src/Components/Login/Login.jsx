@@ -12,6 +12,8 @@ const Login = () => {
   const { responseStatus, errorMessage: loginErrorMessage } = useSelector(
     (state) => state.login
   );
+
+
   //DISPATCHING EMAIL AND PASSWORD FROM UI TO STORE
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,20 +22,22 @@ const Login = () => {
   const loginUser = () => {
     dispatch(login(formValues.email, formValues.password));
   };
-  // ------------------------------------------------------------------------
+
   // GETTING EMAIL, PASSWORD, JWT FROM STORE
   const email = useSelector((state) => {
-    console.log("state:", state);
+    //console.log("state:", state);
     return state.login.email;
   });
-  const password = useSelector((state) => state.login.password);
+
+
   const jwt = useSelector((state) => state.login.jwt);
   const userRole = useSelector((state) => state.login.role);
   const userName = useSelector((state) => state.login.name);
-  console.log("role:", userRole);
-  console.log("jwt:", jwt);
-  console.log("pw :", password);
-  console.log("name :", userName);
+  // console.log("role:", userRole);
+  // console.log("jwt:", jwt);
+  // console.log("name :", userName);
+
+
   //FORM HANDLING AND GETTING INPUT DATA FROM USER
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,9 +48,14 @@ const Login = () => {
     setFormErrors(validate(formValues));
     setIsSubmit(true);
   };
+
+
+
   //VALIDATING USER CREDENTIALS IN BACKEND AND ROUTING TO DASHBOARD
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
+
+
   useEffect(() => {
     if (Object.keys(formErrors).length === 0 && isSubmit && jwt) {
       localStorage.setItem("JWT Token", jwt);
@@ -55,23 +64,7 @@ const Login = () => {
       const COOKIE_NAME2 = "emailCookie";
       document.cookie = `${COOKIE_NAME}=${jwt}`;
       document.cookie = `${COOKIE_NAME2}=${email}`;
-      ///////////////////////////
-      // async function fetchUserId() {
-      //   try {
-      //     const response = await fetch('/api/userId', {
-      //       headers: { Authorization: Bearer ${localStorage.getItem('token')} },
-      //     });
-      //     if (!response.ok) {
-      //       throw new Error('Failed to fetch user ID');
-      //     }
-      //     const { userId } = await response.json();
-      // console.log(userId);
-      //   } catch (error) {
-      //     console.error(error);
-      //   }
-      // }
-      // fetchUserId();
-      ////////////////////////////
+
       if (userRole === "admin" || userRole === "user") {
         // window.cookies.set("cook", jwt);
         return navigate("/learnerdashboard");
@@ -79,14 +72,15 @@ const Login = () => {
         // window.cookies.set("cook", jwt);
         return navigate("/superadmindashboard");
       }
-      // // window.cookies.set("cook", jwt);
-      // navigate("/superadmindashboard");
+
     }
     if (responseStatus === 400) {
       console.log("loginErrorMessage: ", loginErrorMessage);
       setErrorMessage(loginErrorMessage);
     }
   }, [formErrors, isSubmit, jwt, responseStatus]);
+
+
   //FORM VALIDATION ON FRONTEND
   const validate = (values) => {
     const errors = {};
@@ -105,6 +99,8 @@ const Login = () => {
     }
     return errors;
   };
+
+
   return (
     <div className="background-img login-page">
       <main className="form-signin text-center bg-white p-4">
