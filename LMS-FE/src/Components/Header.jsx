@@ -17,6 +17,7 @@ function Header() {
                 {
                     userRole === 'admin' && <div className='me-4'><Link to='/admindashboard'><p className="m-0 p-0 text-primary">Admin Portal <i class="fa-solid fa-location-arrow"></i></p></Link></div>
                 }
+                <Link to='/allcourses' className='text-primary me-4'>All courses</Link>
                 <div className='position-relative'>
                     {userImage?.length === 2 ?
                         <h3 className="rounded-circle bg-secondary text-white fs-5 m-0" style={{ padding: '14px 16px', fontWeight: '400' }}>{userImage}</h3>

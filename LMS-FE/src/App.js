@@ -9,6 +9,7 @@ import Profile from './Components/Profile/Profile';
 import CourseDashboard from './Components/CourseDashboard/CourseDashboard';
 import AdminDashboard from './Components/AdminDashboard/AdminDashboard';
 import MainModule from './Components/Modules/MainModule';
+import AllCourses from './Components/AllCourses/AllCourses';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/coursedashboard/:courseName/:trainerName" element={<CourseDashboard />} />
           <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/mainmodule" element={<MainModule />}></Route>
+          <Route path="/allcourses" element={<AllCourses/>}/>
         </Routes>
       </Router>
     </div>
